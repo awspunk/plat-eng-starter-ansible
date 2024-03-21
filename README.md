@@ -1,6 +1,6 @@
 ## Configuration Management Task - Starter
 
-`A Workflow has been added to test ansible playbook`
+`A Workflow has been added to test ansible playbook using molecule`
 
 Here you will find some starter code, and basic information on how to get started!
 

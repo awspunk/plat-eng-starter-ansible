@@ -1,0 +1,29 @@
+---
+- name: Playbook
+  hosts: all
+  tasks:
+    - name: Ensure /better-place exists
+      file:
+        path: /better-place
+        state: directory
+
+    - name: Create user john
+      include_tasks: create_user.yml
+      vars:
+        username: john
+        home: /better-place/john
+        uid: 1234
+        
+    - name: Update APT package manager repositories
+      ansible.builtin.apt:
+          update_cache: yes
+          
+    - name: Install packages
+      ansible.builtin.package:
+        name:
+          - tmux
+          - vim
+        state: present
+
+    - name: Install Terraform CLI
+      include_tasks: install_terraform.yml

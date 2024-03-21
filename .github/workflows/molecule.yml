@@ -1,0 +1,21 @@
+on: push
+
+jobs:
+  molecule:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: "${{ github.repository }}"
+      - name: molecule create
+        uses: gofrolist/molecule-action@v2
+        with:
+          molecule_command: create
+      - name: molecule converge
+        uses: gofrolist/molecule-action@v2
+        with:
+          molecule_command: converge
+      - name: molecule destroy
+        uses: gofrolist/molecule-action@v2
+        with:
+          molecule_command: destroy
